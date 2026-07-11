@@ -258,14 +258,6 @@
       gap: 12px;
     }
 
-    .booking-links {
-      width: min(100%, 520px);
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-
     .btn {
       min-height: 48px;
       display: inline-flex;
@@ -324,19 +316,20 @@
 
     .travel-link {
       min-width: 0;
-      height: 46px;
+      min-height: 58px;
       display: inline-grid;
       place-items: center;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .94);
-      border: 1px solid rgba(255, 255, 255, .72);
-      padding: 8px 12px;
-      transition: transform .2s ease, box-shadow .2s ease;
+      border-radius: var(--radius);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      padding: 12px 16px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
     .travel-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, .16);
+      border-color: rgba(0, 138, 120, .28);
+      box-shadow: var(--shadow-soft);
     }
 
     .travel-link img {
@@ -344,6 +337,14 @@
       max-height: 23px;
       width: 100%;
       object-fit: contain;
+    }
+
+    .hero-note {
+      max-width: 520px;
+      margin-top: 14px;
+      color: rgba(255, 255, 255, .78);
+      font-size: .94rem;
+      font-weight: 600;
     }
 
     .hero-strip {
@@ -530,6 +531,59 @@
       gap: 18px;
     }
 
+    .booking-platforms {
+      padding-top: 48px;
+    }
+
+    .platform-panel {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .platform-copy {
+      display: grid;
+      gap: 8px;
+    }
+
+    .platform-copy h3 {
+      margin: 0;
+      color: var(--brand-dark);
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    .platform-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .platform-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      padding: 7px 10px;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
     .room {
       overflow: hidden;
       display: flex;
@@ -583,6 +637,21 @@
     .room p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .room-features span {
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      padding: 5px 9px;
+      font-size: .78rem;
+      font-weight: 800;
     }
 
     .price {
@@ -900,7 +969,8 @@
       .amenities,
       .about-grid,
       .location-grid,
-      .contact-grid {
+      .contact-grid,
+      .platform-panel {
         grid-template-columns: 1fr;
       }
 
@@ -956,14 +1026,8 @@
         gap: 10px;
       }
 
-      .booking-links {
-        width: 100%;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
-      }
-
       .travel-link {
-        height: 44px;
+        min-height: 50px;
         padding: 8px;
       }
 
@@ -977,17 +1041,18 @@
       }
 
       .hero-strip,
-      main section,
+      main section:not(.hero),
       .footer-inner {
         width: min(100% - 24px, 1180px);
       }
 
-      main section {
+      main section:not(.hero) {
         padding: 60px 0;
       }
 
       .stats,
-      .gallery {
+      .gallery,
+      .platform-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1032,9 +1097,10 @@
         </span>
       </a>
 
-      <div class="nav-links" id="nav-links">
+        <div class="nav-links" id="nav-links">
         <a href="#about">About</a>
         <a href="#rooms">Rooms</a>
+        <a href="#book-online">Booking</a>
         <a href="#amenities">Amenities</a>
         <a href="#gallery">Gallery</a>
         <a href="#location">Location</a>
@@ -1075,18 +1141,7 @@
             Call now
           </a>
         </div>
-
-        <div class="booking-links" aria-label="Online travel partners">
-          <a class="travel-link" href="https://www.makemytrip.global/hotels/hotel-details/?hotelId=201806131657073660" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on MakeMyTrip">
-            <img src="images/mmt.png" alt="MakeMyTrip">
-          </a>
-          <a class="travel-link" href="https://www.goibibo.com/hotels/dwarakalodge-hotel-in-kavali-5839051344976367327/" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on Goibibo">
-            <img src="images/go.png" alt="Goibibo">
-          </a>
-          <a class="travel-link" href="https://www.redbus.in/" target="_blank" rel="noopener" aria-label="Book through RedBus">
-            <img src="images/redbus.png" alt="RedBus">
-          </a>
-        </div>
+        <p class="hero-note">Direct desk support for same-day availability, late arrivals, and quick room confirmation.</p>
 
         <div class="hero-strip" aria-label="Hotel highlights">
           <div><strong>27+ years</strong><span>of local hospitality</span></div>
@@ -1140,6 +1195,7 @@
           <div class="room-body">
             <h3>Standard Non-AC</h3>
             <p>Comfortable essentials for short, budget-conscious stays.</p>
+            <div class="room-features"><span>Wi-Fi</span><span>Hot water</span><span>Front desk</span></div>
             <div class="price"><strong>₹500</strong><span>/ night</span></div>
             <button class="btn btn-primary" type="button" data-booking="Standard Non-AC Room">
               <i data-lucide="message-circle"></i>
@@ -1156,6 +1212,7 @@
           <div class="room-body">
             <h3>Deluxe AC</h3>
             <p>Cooler comfort for business travel, family visits, and longer stays.</p>
+            <div class="room-features"><span>AC room</span><span>Wi-Fi</span><span>Power backup</span></div>
             <div class="price"><strong>₹1400</strong><span>/ night</span></div>
             <button class="btn btn-primary" type="button" data-booking="Deluxe AC Room">
               <i data-lucide="message-circle"></i>
@@ -1172,6 +1229,7 @@
           <div class="room-body">
             <h3>Family Suite</h3>
             <p>More room for families and guests who want extra space.</p>
+            <div class="room-features"><span>Family stay</span><span>Extra space</span><span>Parking</span></div>
             <div class="price"><strong>₹2000</strong><span>/ night</span></div>
             <button class="btn btn-primary" type="button" data-booking="Family Suite">
               <i data-lucide="message-circle"></i>
@@ -1179,6 +1237,28 @@
             </button>
           </div>
         </article>
+      </div>
+
+      <div id="book-online" class="booking-platforms reveal">
+        <div class="platform-panel">
+          <div class="platform-copy">
+            <p class="section-kicker">Booking Options</p>
+            <h3>Book direct for quick confirmation, or use your preferred travel platform.</h3>
+            <p>For fastest help, call or message the front desk. Platform links are kept here for guests who prefer comparing or managing trips through their travel account.</p>
+            <span class="platform-note"><i data-lucide="badge-check"></i> Direct booking is recommended for fastest response</span>
+          </div>
+          <div class="platform-grid" aria-label="Online travel partners">
+            <a class="travel-link" href="https://www.makemytrip.global/hotels/hotel-details/?hotelId=201806131657073660" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on MakeMyTrip">
+              <img src="images/mmt.png" alt="MakeMyTrip">
+            </a>
+            <a class="travel-link" href="https://www.goibibo.com/hotels/dwarakalodge-hotel-in-kavali-5839051344976367327/" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on Goibibo">
+              <img src="images/go.png" alt="Goibibo">
+            </a>
+            <a class="travel-link" href="https://www.redbus.in/" target="_blank" rel="noopener" aria-label="Book through RedBus">
+              <img src="images/redbus.png" alt="RedBus">
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dwaraka Lodge Kavali offers clean, comfortable rooms, 24/7 support, parking, Wi-Fi, and easy booking by phone or WhatsApp.">
+  <meta name="theme-color" content="#0f2a24">
+  <title>Dwaraka Lodge Kavali | Clean Rooms, Trusted Stay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <style>
+    :root {
+      --ink: #13201d;
+      --muted: #5c6864;
+      --paper: #fbfaf5;
+      --panel: #ffffff;
+      --line: #e3ded2;
+      --brand: #0f6b57;
+      --brand-dark: #0d3f35;
+      --accent: #c27a28;
+      --blue: #1769aa;
+      --shadow: 0 18px 48px rgba(27, 31, 29, .13);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .91);
+      border-bottom: 1px solid rgba(227, 222, 210, .75);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      object-fit: cover;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      border-radius: 999px;
+      color: #243531;
+      font-size: .92rem;
+      font-weight: 700;
+      padding: 10px 12px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: #eef5f1;
+      color: var(--brand-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn,
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--panel);
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .icon-btn:hover,
+    .menu-toggle:hover {
+      border-color: rgba(15, 107, 87, .35);
+      box-shadow: 0 10px 24px rgba(15, 63, 53, .12);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 76px);
+      isolation: isolate;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .hero-slides,
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-slide {
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 1s ease, transform 5s ease;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 18, 16, .84), rgba(8, 18, 16, .44) 52%, rgba(8, 18, 16, .18)),
+        linear-gradient(0deg, rgba(8, 18, 16, .72), rgba(8, 18, 16, .04) 48%);
+    }
+
+    .hero-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 86px 0 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: #e8f5ef;
+      font-size: .88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.7rem, 8vw, 6.8rem);
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, .88);
+      font-size: clamp(1.02rem, 2vw, 1.28rem);
+    }
+
+    .hero-actions,
+    .booking-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, .16);
+    }
+
+    .btn-primary {
+      background: #25d366;
+      color: #062015;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .travel-link {
+      min-width: 114px;
+      height: 48px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #fff;
+      padding: 9px 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .travel-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, .16);
+    }
+
+    .travel-link img {
+      max-height: 24px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .hero-strip {
+      width: min(1180px, calc(100% - 32px));
+      margin: 38px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(255, 255, 255, .94);
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, .6);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-strip div {
+      min-height: 92px;
+      display: grid;
+      align-content: center;
+      gap: 3px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-strip div:last-child {
+      border-right: 0;
+    }
+
+    .hero-strip strong {
+      font-size: 1.22rem;
+      line-height: 1.1;
+    }
+
+    .hero-strip span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    main section {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 82px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--brand);
+      font-size: .82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .note {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .note-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .note-item i {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e8f5ef;
+      color: var(--brand-dark);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .stat,
+    .room,
+    .amenity,
+    .contact-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 34px rgba(27, 31, 29, .08);
+    }
+
+    .stat {
+      padding: 24px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--brand-dark);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .rooms {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .room {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .room:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .room-media {
+      position: relative;
+      background: #eae6dc;
+    }
+
+    .room-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .94);
+      color: var(--brand-dark);
+      padding: 6px 10px;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+
+    .room-body {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .room h3 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.15;
+    }
+
+    .room p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .price strong {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .room .btn {
+      align-self: end;
+      width: 100%;
+    }
+
+    .amenities {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .amenity {
+      min-height: 118px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 22px;
+    }
+
+    .amenity i {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #f3eee5;
+      color: var(--accent);
+    }
+
+    .amenity strong {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .amenity span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-auto-rows: 210px;
+      gap: 14px;
+    }
+
+    .gallery button {
+      position: relative;
+      display: block;
+      min-width: 0;
+      border: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: 0;
+      background: #ddd;
+      cursor: zoom-in;
+    }
+
+    .gallery button:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .gallery button:hover img {
+      transform: scale(1.04);
+    }
+
+    .location-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .address-card {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: 28px;
+      background: var(--brand-dark);
+      border-radius: var(--radius);
+      color: #fff;
+    }
+
+    .address-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .contact-panel {
+      padding: 26px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      padding: 13px 14px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(15, 107, 87, .65);
+      box-shadow: 0 0 0 4px rgba(15, 107, 87, .12);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: #f3eee5;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .contact-row i {
+      color: var(--brand);
+    }
+
+    .site-footer {
+      margin-top: 46px;
+      background: #101816;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 96px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-inner strong {
+      display: block;
+      color: #fff;
+    }
+
+    .floating-actions {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      display: grid;
+      gap: 10px;
+    }
+
+    .floating-actions .icon-btn {
+      width: 52px;
+      height: 52px;
+      border: 0;
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, .22);
+    }
+
+    .floating-actions .whatsapp {
+      background: #25d366;
+      color: #062015;
+    }
+
+    .floating-actions .phone {
+      background: var(--blue);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(4, 8, 7, .9);
+    }
+
+    .lightbox img {
+      max-width: min(1100px, 94vw);
+      max-height: 88vh;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 76px 16px auto 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        border-radius: var(--radius);
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+      }
+
+      .hero-strip,
+      .rooms,
+      .amenities,
+      .about-grid,
+      .location-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-strip {
+        margin-top: 30px;
+      }
+
+      .hero-strip div {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-strip div:last-child {
+        border-bottom: 0;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .brand span,
+      .nav-actions .phone-top {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        width: min(100% - 24px, 1180px);
+        padding: 76px 0 28px;
+      }
+
+      .hero-actions,
+      .booking-links {
+        align-items: stretch;
+      }
+
+      .hero-actions .btn,
+      .booking-links,
+      .travel-link {
+        width: 100%;
+      }
+
+      .hero-strip,
+      main section,
+      .footer-inner {
+        width: min(100% - 24px, 1180px);
+      }
+
+      main section {
+        padding: 60px 0;
+      }
+
+      .stats,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-auto-rows: 230px;
+      }
+
+      .gallery button:first-child {
+        grid-row: span 1;
+      }
+
+      .amenity {
+        min-height: 0;
+      }
+
+      .footer-inner {
+        padding: 22px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Dwaraka Lodge home">
+        <img src="images/logo.png" alt="Dwaraka Lodge logo">
+        <span>
+          <strong>Dwaraka Lodge</strong>
+          <span>Kavali, Andhra Pradesh</span>
+        </span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="icon-btn phone-top" href="tel:+919550830888" aria-label="Call Dwaraka Lodge">
+          <i data-lucide="phone"></i>
+        </a>
+        <button class="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Dwaraka Lodge Kavali">
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide active" style="background-image: url('images/exterior.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('images/lobby.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('images/bedroom.jpg');"></div>
+      </div>
+
+      <div class="hero-inner">
+        <p class="eyebrow">Trusted stay since 1998</p>
+        <h1>Dwaraka Lodge Kavali</h1>
+        <p class="hero-copy">Clean rooms, practical comfort, easy access, and a team that keeps travel simple whether you are here for business, family, or a quick stopover.</p>
+
+        <div class="hero-actions" aria-label="Booking actions">
+          <button class="btn btn-primary" type="button" data-booking="Room Booking Inquiry">
+            <i data-lucide="message-circle"></i>
+            Book on WhatsApp
+          </button>
+          <a class="btn btn-secondary" href="tel:+919550830888">
+            <i data-lucide="phone"></i>
+            Call now
+          </a>
+        </div>
+
+        <div class="booking-links" aria-label="Online travel partners">
+          <a class="travel-link" href="https://www.makemytrip.global/hotels/hotel-details/?hotelId=201806131657073660" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on MakeMyTrip">
+            <img src="images/mmt.png" alt="MakeMyTrip">
+          </a>
+          <a class="travel-link" href="https://www.goibibo.com/hotels/dwarakalodge-hotel-in-kavali-5839051344976367327/" target="_blank" rel="noopener" aria-label="View Dwaraka Lodge on Goibibo">
+            <img src="images/go.png" alt="Goibibo">
+          </a>
+          <a class="travel-link" href="https://www.redbus.in/" target="_blank" rel="noopener" aria-label="Book through RedBus">
+            <img src="images/redbus.png" alt="RedBus">
+          </a>
+        </div>
+
+        <div class="hero-strip" aria-label="Hotel highlights">
+          <div><strong>27+ years</strong><span>of local hospitality</span></div>
+          <div><strong>40 rooms</strong><span>for solo and family stays</span></div>
+          <div><strong>24/7 desk</strong><span>arrival support anytime</span></div>
+          <div><strong>Near transit</strong><span>easy Kavali access</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-grid">
+      <div class="reveal">
+        <div class="section-head">
+          <p class="section-kicker">Our Legacy</p>
+          <h2>A familiar Kavali address, refreshed for today.</h2>
+          <p>Established in 1998, Dwaraka Lodge has welcomed travelers for nearly three decades. The property has been renovated with cleaner finishes, improved comfort, and the same straightforward hospitality guests remember.</p>
+        </div>
+        <div class="note">
+          <div class="note-item">
+            <i data-lucide="sparkles"></i>
+            <span>Renovated spaces focused on hygiene, practical comfort, and quick check-ins.</span>
+          </div>
+          <div class="note-item">
+            <i data-lucide="map-pin"></i>
+            <span>Convenient Kavali location for business visits, family trips, and stopovers.</span>
+          </div>
+          <div class="note-item">
+            <i data-lucide="shield-check"></i>
+            <span>CCTV, front desk support, and power backup for a more dependable stay.</span>
+          </div>
+        </div>
+      </div>
+      <figure class="about-photo reveal">
+        <img src="images/lobby.jpg" alt="Reception lobby at Dwaraka Lodge Kavali" loading="lazy">
+      </figure>
+    </section>
+
+    <section id="rooms">
+      <div class="section-head center reveal">
+        <p class="section-kicker">Rooms</p>
+        <h2>Choose the stay that fits the trip.</h2>
+        <p>Simple, clean room options with direct WhatsApp booking for faster confirmation.</p>
+      </div>
+
+      <div class="rooms">
+        <article class="room reveal">
+          <div class="room-media">
+            <span class="badge">Value Stay</span>
+            <img src="images/room1.jpg" alt="Standard non-AC room at Dwaraka Lodge" loading="lazy">
+          </div>
+          <div class="room-body">
+            <h3>Standard Non-AC</h3>
+            <p>Comfortable essentials for short, budget-conscious stays.</p>
+            <div class="price"><strong>₹500</strong><span>/ night</span></div>
+            <button class="btn btn-primary" type="button" data-booking="Standard Non-AC Room">
+              <i data-lucide="message-circle"></i>
+              Book this room
+            </button>
+          </div>
+        </article>
+
+        <article class="room reveal">
+          <div class="room-media">
+            <span class="badge">Air Conditioned</span>
+            <img src="images/room2.jpg" alt="Deluxe AC room at Dwaraka Lodge" loading="lazy">
+          </div>
+          <div class="room-body">
+            <h3>Deluxe AC</h3>
+            <p>Cooler comfort for business travel, family visits, and longer stays.</p>
+            <div class="price"><strong>₹1400</strong><span>/ night</span></div>
+            <button class="btn btn-primary" type="button" data-booking="Deluxe AC Room">
+              <i data-lucide="message-circle"></i>
+              Book this room
+            </button>
+          </div>
+        </article>
+
+        <article class="room reveal">
+          <div class="room-media">
+            <span class="badge">Family Option</span>
+            <img src="images/room3.jpg" alt="Family suite room at Dwaraka Lodge" loading="lazy">
+          </div>
+          <div class="room-body">
+            <h3>Family Suite</h3>
+            <p>More room for families and guests who want extra space.</p>
+            <div class="price"><strong>₹2000</strong><span>/ night</span></div>
+            <button class="btn btn-primary" type="button" data-booking="Family Suite">
+              <i data-lucide="message-circle"></i>
+              Book this room
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="amenities">
+      <div class="section-head reveal">
+        <p class="section-kicker">Amenities</p>
+        <h2>The essentials are handled.</h2>
+        <p>Useful comforts for guests who need a reliable place to rest, refresh, and move on with the day.</p>
+      </div>
+
+      <div class="amenities">
+        <div class="amenity reveal"><i data-lucide="wifi"></i><div><strong>Free Wi-Fi</strong><span>Stay connected throughout the property.</span></div></div>
+        <div class="amenity reveal"><i data-lucide="shower-head"></i><div><strong>Hot Water</strong><span>Freshen up comfortably after travel.</span></div></div>
+        <div class="amenity reveal"><i data-lucide="car"></i><div><strong>Parking</strong><span>Convenient space for guest vehicles.</span></div></div>
+        <div class="amenity reveal"><i data-lucide="concierge-bell"></i><div><strong>24/7 Front Desk</strong><span>Support for late arrivals and early starts.</span></div></div>
+        <div class="amenity reveal"><i data-lucide="cctv"></i><div><strong>CCTV Security</strong><span>Property monitoring for peace of mind.</span></div></div>
+        <div class="amenity reveal"><i data-lucide="battery-charging"></i><div><strong>Power Backup</strong><span>Added reliability during power interruptions.</span></div></div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head center reveal">
+        <p class="section-kicker">Gallery</p>
+        <h2>See the property before you arrive.</h2>
+      </div>
+
+      <div class="gallery" aria-label="Dwaraka Lodge photo gallery">
+        <button type="button" class="reveal" data-gallery="images/exterior.jpg" aria-label="Open exterior photo">
+          <img src="images/exterior.jpg" alt="Exterior view of Dwaraka Lodge Kavali" loading="lazy">
+        </button>
+        <button type="button" class="reveal" data-gallery="images/bedroom.jpg" aria-label="Open bedroom photo">
+          <img src="images/bedroom.jpg" alt="Bedroom at Dwaraka Lodge Kavali" loading="lazy">
+        </button>
+        <button type="button" class="reveal" data-gallery="images/restroom.jpg" aria-label="Open restroom photo">
+          <img src="images/restroom.jpg" alt="Restroom at Dwaraka Lodge Kavali" loading="lazy">
+        </button>
+        <button type="button" class="reveal" data-gallery="images/lobby.jpg" aria-label="Open lobby photo">
+          <img src="images/lobby.jpg" alt="Lobby at Dwaraka Lodge Kavali" loading="lazy">
+        </button>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="location-grid">
+        <div class="address-card reveal">
+          <div>
+            <p class="section-kicker">Location</p>
+            <h2>Easy to find in Kavali.</h2>
+          </div>
+          <p>Use the map for directions, or call the front desk if you need arrival help.</p>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Dwaraka%20Lodge%20Kavali" target="_blank" rel="noopener">
+            <i data-lucide="map-pin"></i>
+            Open in Maps
+          </a>
+        </div>
+        <div class="map reveal">
+          <iframe src="https://www.google.com/maps?q=Dwaraka+Lodge+Kavali&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Dwaraka Lodge Kavali"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head center reveal">
+        <p class="section-kicker">Contact</p>
+        <h2>Send a booking request.</h2>
+        <p>The form opens WhatsApp with your details so the lodge team can respond quickly.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-panel reveal">
+          <form class="contact-form" id="booking-form">
+            <label>
+              Name
+              <input name="name" type="text" autocomplete="name" placeholder="Your name">
+            </label>
+            <label>
+              Phone
+              <input name="phone" type="tel" autocomplete="tel" placeholder="Your phone number">
+            </label>
+            <label>
+              Message
+              <textarea name="message" placeholder="Room type, dates, number of guests"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">
+              <i data-lucide="send"></i>
+              Send on WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <aside class="contact-card reveal">
+          <h3>Direct booking</h3>
+          <a class="contact-row" href="tel:+919550830888"><i data-lucide="phone"></i><span>+91 95508 30888</span></a>
+          <a class="contact-row" href="https://wa.me/919550830888" target="_blank" rel="noopener"><i data-lucide="message-circle"></i><span>WhatsApp booking</span></a>
+          <a class="contact-row" href="https://www.google.com/maps/search/?api=1&query=Dwaraka%20Lodge%20Kavali" target="_blank" rel="noopener"><i data-lucide="navigation"></i><span>Dwaraka Lodge, Kavali</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Dwaraka Lodge Kavali</strong>
+        <span>Clean rooms, quick booking, dependable hospitality.</span>
+      </div>
+      <span>© 2026 Dwaraka Lodge. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <div class="floating-actions" aria-label="Quick actions">
+    <a class="icon-btn phone" href="tel:+919550830888" aria-label="Call Dwaraka Lodge">
+      <i data-lucide="phone"></i>
+    </a>
+    <a class="icon-btn whatsapp" href="https://wa.me/919550830888" target="_blank" rel="noopener" aria-label="Message Dwaraka Lodge on WhatsApp">
+      <i data-lucide="message-circle"></i>
+    </a>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    const phoneNumber = "919550830888";
+    const navLinks = document.querySelector("#nav-links");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const slides = [...document.querySelectorAll(".hero-slide")];
+    const revealItems = document.querySelectorAll(".reveal");
+
+    function openWhatsApp(message) {
+      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    function syncIcons() {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      menuToggle.innerHTML = isOpen ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+      syncIcons();
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        menuToggle.innerHTML = '<i data-lucide="menu"></i>';
+        syncIcons();
+      }
+    });
+
+    document.querySelectorAll("[data-booking]").forEach((button) => {
+      button.addEventListener("click", () => {
+        openWhatsApp(`Hello, I want to book ${button.dataset.booking} at Dwaraka Lodge Kavali.`);
+      });
+    });
+
+    document.querySelector("#booking-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const name = form.get("name")?.trim();
+      const phone = form.get("phone")?.trim();
+      const message = form.get("message")?.trim();
+      const parts = [
+        "Hello, I want to book a room at Dwaraka Lodge Kavali.",
+        name ? `Name: ${name}` : "",
+        phone ? `Phone: ${phone}` : "",
+        message ? `Details: ${message}` : ""
+      ].filter(Boolean);
+
+      openWhatsApp(parts.join("\n"));
+    });
+
+    let slideIndex = 0;
+    window.setInterval(() => {
+      slides[slideIndex].classList.remove("active");
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
+    }, 4500);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    document.querySelectorAll("[data-gallery]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.dataset.gallery;
+        const lightbox = document.createElement("div");
+        lightbox.className = "lightbox";
+        lightbox.innerHTML = `<img src="${image}" alt="">`;
+        lightbox.addEventListener("click", () => lightbox.remove());
+        document.body.appendChild(lightbox);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        document.querySelector(".lightbox")?.remove();
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    syncIcons();
+  </script>
+</body>
+</html>
